@@ -500,6 +500,55 @@ let suggestions = [];
 
 const getNumOfSuggestions = () => { return (suggestions) ? suggestions.length : 0 };
 
+/*
+ * Backtrack to the search page.
+ */
+const back = () => {
+  const searchContainer = document.getElementById("searchContainer");
+  const info = document.getElementById("info");
+  const tag = document.getElementById("tag");
+
+  searchContainer.style.display = "flex";
+  info.style.display = "none";
+  tag.style.display = "none";
+};
+
+/*
+ * Display information about the selected suggestion provided by the id on the page.
+ */
+const displaySelectedSuggestion = (id) => {
+  const searchContainer = document.getElementById("searchContainer");
+  const info = document.getElementById("info");
+  const tag = document.getElementById("tag");
+
+  searchContainer.style.display = "none";
+  info.style.display = "flex";
+  tag.style.display = "flex";
+
+  let DOMString = "";
+
+  Object.keys(suggestions[id].obj).forEach((key) => {
+    if (key === "type" || key === "avatar") return; // No existing images for avatars so do nothing for now
+
+    const keyUpper = key.toUpperCase();
+    
+    if (key === "title" || key === "name" || key === "firstname" || key === "lastname") {
+      DOMString += `
+      <div class="attr">
+        <div class="attr-name">${keyUpper}</div>
+        <div class="attr-value text-bold">${suggestions[id].obj[key]}</div></div>`
+    } else {
+      DOMString += `
+      <div class="attr">
+        <div class="attr-name">${keyUpper}</div>
+        <div class="attr-value ">${suggestions[id].obj[key]}</div></div>`
+    }
+  });
+
+  info.innerHTML = DOMString;
+  tag.innerHTML = `<p class="tagname">${suggestions[id].suggestionName}</p>`;
+};
+
 /* Return a DOM element object for a suggestion with the strings suggestionName and query.
  * obj is the object containing suggestionName and other data that can be displayed when
  * selected.
@@ -511,8 +560,9 @@ const createSuggestion = (obj, suggestionName, query) => {
   const queryLower = query.toLowerCase();
 
   const index = suggestionNameLower.indexOf(queryLower);
+  const numOfSuggestions = getNumOfSuggestions();
   const DOM = `
-  <div class="suggestion flex-row">
+  <div class="suggestion flex-row" onclick="displaySelectedSuggestion(${numOfSuggestions})">
     <p class="row-text">${suggestionName.slice(
       0,
       index

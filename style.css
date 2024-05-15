@@ -72,6 +72,54 @@
   left: 5px;
 }
 
+.info-container {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  height: fit-content;
+  padding: 5%;
+}
+
+.attr {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.attr-name {
+  color: grey;
+}
+
+.attr-value {
+  font-size: 24px;
+}
+
+.tag {
+  display: flex;
+  margin: auto;
+  width: fit-content;
+  padding: 3px 25px 3px 10px;
+  border-radius: 12px;
+  background-color: rgb(180, 234, 255);
+  background-image: url("https://cdn-icons-png.flaticon.com/512/3686/3686971.png");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 20px 20px;
+  display: none;
+}
+
+.tag:hover {
+  background-color: rgb(211, 243, 255);
+  cursor: pointer;
+}
+
+.tagname {
+  font-size: 16px;
+  padding: 0.1vh calc(20px + 0.4vw) 0.1vh 0.4vw;
+  margin: 0;
+}
+
 .flex-row {
   display: flex;
   margin: 0;
@@ -80,6 +128,10 @@
 
 .align-self-center {
   align-self: center;
+}
+
+.text-bold {
+  font-weight: bold;
 }
 
 @media (max-width: 460px) {
