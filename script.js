@@ -535,18 +535,18 @@ const displaySelectedSuggestion = (id) => {
     if (key === "title" || key === "name" || key === "firstname" || key === "lastname") {
       DOMString += `
       <div class="attr">
-        <div class="attr-name">${keyUpper}</div>
-        <div class="attr-value text-bold">${suggestions[id].obj[key]}</div></div>`
+        <div class="attr-name attr-name-sm">${keyUpper}</div>
+        <div class="attr-value attr-value-sm text-bold">${suggestions[id].obj[key]}</div></div>`
     } else {
       DOMString += `
       <div class="attr">
-        <div class="attr-name">${keyUpper}</div>
-        <div class="attr-value ">${suggestions[id].obj[key]}</div></div>`
+        <div class="attr-name attr-name-sm">${keyUpper}</div>
+        <div class="attr-value attr-value-sm">${suggestions[id].obj[key]}</div></div>`
     }
   });
 
   info.innerHTML = DOMString;
-  tag.innerHTML = `<p class="tagname">${suggestions[id].suggestionName}</p>`;
+  tag.innerHTML = `<p class="tagname tagname-sm">${suggestions[id].suggestionName}</p>`;
 };
 
 /* Return a DOM element object for a suggestion with the strings suggestionName and query.
@@ -562,7 +562,7 @@ const createSuggestion = (obj, suggestionName, query) => {
   const index = suggestionNameLower.indexOf(queryLower);
   const numOfSuggestions = getNumOfSuggestions();
   const DOM = `
-  <div class="suggestion flex-row" onclick="displaySelectedSuggestion(${numOfSuggestions})">
+  <div class="suggestion suggestion-sm flex-row" onclick="displaySelectedSuggestion(${numOfSuggestions})">
     <p class="row-text">${suggestionName.slice(
       0,
       index
@@ -588,6 +588,7 @@ inputField.addEventListener("input", () => {
 
   if (!query || query.length < 4) {
     suggestionsList.innerHTML = "";
+    suggestionsList.style.display = "none";
     return;
   }
 
@@ -614,8 +615,10 @@ inputField.addEventListener("input", () => {
 
   if (DOMString) {
     DOMString =
-      '<div class="results-row flex-row"><p class="row-text">RESULTS</p></div>' + DOMString;
+      '<div class="results-row results-row-sm flex-row"><p class="row-text">RESULTS</p></div>' + DOMString;
   }
 
   suggestionsList.innerHTML = DOMString;
+  suggestionsList.style.display = "flex";
+  suggestionsList.style.flexDirection = "column";
 });
