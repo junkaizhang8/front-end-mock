@@ -1,0 +1,55 @@
+.search-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 20px;
+}
+
+.search-bar {
+  height: 5vh;
+  width: 15vw;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px gray;
+  background-repeat: no-repeat;
+  transition: 500ms;
+}
+
+.search-bar:hover {
+  width: 30vw;
+  transition: 500ms;
+}
+
+.input-field {
+  width: calc(100% - 30px);
+  border: 0;
+  font-size: 14px;
+  transition: 500ms;
+}
+
+.input-field:focus {
+  outline: none;
+}
+
+.search-icon {
+  display: flex;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg");
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+}
+
+.flex-row {
+  display: flex;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+@media (max-width: 460px) {
+
+}
