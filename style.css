@@ -1,8 +1,9 @@
 .search-container {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  margin: 20px;
+  width: fit-content;
+  margin: 40px;
+  box-shadow: 3px 3px 5px gray;
 }
 
 .search-bar {
@@ -40,9 +41,40 @@
   height: 20px;
 }
 
+.suggestions {
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestion {
+  height: 5vh;
+  width: 100%;
+  border-radius: 5px;
+  transition: 500ms;
+}
+
+.suggestion:hover {
+  background-color: lightgray;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+.results-row {
+  height: 4vh;
+  width: 100%;
+  border-radius: 5px;
+  transition: 500ms;
+}
+
+.row-text {
+  margin: 0;
+  align-self: center;
+  left: 5px;
+}
+
 .flex-row {
   display: flex;
-  margin: 0 auto;
+  margin: 0;
   flex-wrap: wrap;
 }
 
